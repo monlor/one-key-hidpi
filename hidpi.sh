@@ -11,8 +11,12 @@ cat << EEF
 EEF
     #
     VendorID=$(ioreg -l | grep "DisplayVendorID" | awk '{print $9}')
+    [ -z "$VendorID" ] && VendorID=$(ioreg -l | grep "DisplayVendorID" | awk '{print $8}')
     ProductID=$(ioreg -l | grep "DisplayProductID" | awk '{print $9}')
+    [ -z "$ProductID" ] && ProductID=$(ioreg -l | grep "DisplayProductID" | awk '{print $8}')
     EDID=$(ioreg -l | grep "IODisplayEDID" | awk '{print $9}' | sed -e 's/.$//' -e 's/^.//')
+    [ -z "$EDID" ] && EDID=$(ioreg -l | grep "IODisplayEDID" | awk '{print $8}' | sed -e 's/.$//' -e 's/^.//')
+    [ -z "$VendorID" -o -z "$ProductID" -o -z "$EDID" ] && echo "获取各种ID失败！" && exit
 
     Vid=$(echo "obase=16;$VendorID" | bc | tr 'A-Z' 'a-z')
     Pid=$(echo "obase=16;$ProductID" | bc | tr 'A-Z' 'a-z')
