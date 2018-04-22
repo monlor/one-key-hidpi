@@ -17,7 +17,7 @@ MacOS的dpi机制和win下不一样，比如1080p的屏幕在win下有125%、150
 在终端输入以下命令回车即可
 
 ```
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/xzhih/one-key-hidpi/master/hidpi.sh)"
+$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/monlor/one-key-hidpi/master/hidpi.sh)"
 ```
 
 ![运行](https://i.loli.net/2018/04/03/5ac2963c7b26b.png)
