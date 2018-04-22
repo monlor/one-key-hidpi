@@ -10,9 +10,9 @@ cat << EEF
 ----------------------------------------
 EEF
     #
-    VendorID=$(ioreg -l | grep "DisplayVendorID" | awk '{print $8}')
-    ProductID=$(ioreg -l | grep "DisplayProductID" | awk '{print $8}')
-    EDID=$(ioreg -l | grep "IODisplayEDID" | awk '{print $8}' | sed -e 's/.$//' -e 's/^.//')
+    VendorID=$(ioreg -l | grep "DisplayVendorID" | awk '{print $9}')
+    ProductID=$(ioreg -l | grep "DisplayProductID" | awk '{print $9}')
+    EDID=$(ioreg -l | grep "IODisplayEDID" | awk '{print $9}' | sed -e 's/.$//' -e 's/^.//')
 
     Vid=$(echo "obase=16;$VendorID" | bc | tr 'A-Z' 'a-z')
     Pid=$(echo "obase=16;$ProductID" | bc | tr 'A-Z' 'a-z')
